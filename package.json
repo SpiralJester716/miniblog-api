@@ -1,0 +1,29 @@
+{
+  "name": "miniblog-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "API REST de authors, posts y comments",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "db:setup": "node scripts/database.js setup",
+    "db:seed": "node scripts/database.js seed",
+    "test": "node --test tests/unit.test.js tests/services.test.js",
+    "test:integration": "node --test tests/integration.test.js",
+    "test:embedded": "node scripts/test-embedded.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "pg": "^8.16.3",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "@apidevtools/swagger-parser": "^12.1.0",
+    "@electric-sql/pglite": "^0.5.15",
+    "supertest": "^7.1.4"
+  }
+}

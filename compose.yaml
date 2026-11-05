@@ -1,0 +1,18 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: miniblog
+      POSTGRES_PASSWORD: miniblog
+      POSTGRES_DB: miniblog
+    ports:
+      - '127.0.0.1:5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U miniblog -d miniblog']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+volumes:
+  postgres_data:
