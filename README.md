@@ -3,6 +3,8 @@
 API REST educativa en **Node.js + Express + PostgreSQL**, con SQL directo usando `pg`.
 Incluye CRUD de autores y posts, comentarios, validaciones, tests con Supertest y documentación OpenAPI 3.0.
 
+**Demo en Railway:** [Swagger UI](https://miniblog-api-production-5675.up.railway.app/docs/) · [Estado de la API](https://miniblog-api-production-5675.up.railway.app/health)
+
 ## Requisitos
 
 - Node.js 22 o superior y npm.
@@ -154,7 +156,7 @@ La suite cubre CRUD de autores/posts, comentarios, campos vacíos, tipos, IDs in
 3. Agregá un servicio desde el repositorio GitHub y seleccioná la rama `main`.
 4. En **Variables** del servicio API, agregá `DATABASE_URL` como referencia a la variable del servicio PostgreSQL. Si el servicio se llama `Postgres`, la referencia es `${{Postgres.DATABASE_URL}}`.
 5. Configurá `NODE_ENV=production`. Railway proporciona `PORT`; la API escucha en `0.0.0.0`.
-6. `railway.json` configura `npm run db:setup` como pre-deploy, `npm start` y `/health`. El pre-deploy corre dentro de la red privada; si falla el setup, el despliegue no continúa.
+6. En **Settings → Deploy** del servicio, guardá **Pre-deploy Command** = `npm run db:setup`, **Start Command** = `npm start` y **Healthcheck Path** = `/health`. Railway marcó `railway.json` como obsoleto durante este despliegue. El archivo conserva los valores de referencia. El pre-deploy corre dentro de la red privada; si falla el setup, el despliegue no continúa.
 7. En **Settings → Networking**, generá un dominio público para la API y comprobá `/health`, `/docs/` y `/authors`.
 8. Si querés datos de muestra, ejecutá `npm run db:seed` dentro del servicio con acceso a la red privada. No se ejecuta automáticamente en producción.
 
